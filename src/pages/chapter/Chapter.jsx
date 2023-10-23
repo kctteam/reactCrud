@@ -14,7 +14,7 @@ import { ConfirmServiceProvider } from "./../../components/content/ConfirmServic
 const Chapter = () => {
     const params = useParams();
 
-    const [chapter, setChapter] = useState({part: {num: "", title: ""}, num: "", title: ""});
+    const [chapter, setChapter] = useState({ part: { num: "", title: "" }, num: "", title: "" });
 
     useEffect(() => {
         getChapter(params.chapterId)

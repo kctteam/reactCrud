@@ -12,7 +12,7 @@ import { ConfirmServiceProvider } from "./../../components/content/ConfirmServic
 
 const Part = () => {
     const params = useParams();
-    const [part, setPart] = useState([]);
+    const [part, setPart] = useState({ num: "", title: "" });
 
     useEffect(() => {
         getPart(params.partId)
