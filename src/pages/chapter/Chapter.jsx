@@ -9,11 +9,12 @@ import Breadcrumbs from "../../components/header/Breadcrumbs";
 import ChapterComponent from "../../components/content/ChapterComponent";
 import ChapterContentComponent from "../../components/content/ChapterContentComponent";
 
-const Chapter = () => {
+import { ConfirmServiceProvider } from "./../../components/content/ConfirmServiceBS";
 
+const Chapter = () => {
     const params = useParams();
 
-    const [chapter, setChapter] = useState([]);
+    const [chapter, setChapter] = useState({part: {num: "", title: ""}, num: "", title: ""});
 
     useEffect(() => {
         getChapter(params.chapterId)
@@ -26,17 +27,19 @@ const Chapter = () => {
     }, []);
 
     return (
-        <div className="container py-5">
-            <Header chapterId={params.chapterId} />
-            <Breadcrumbs links={[{ link: `/part/${chapter.part?.id}`, name: "§ " + chapter.part?.num + " " + chapter.part?.title }, { name: "§ " + chapter.num + " " + chapter.title }]} />
-            <div className="mt-5">
-                <ChapterComponent chapter={chapter} />
+        <ConfirmServiceProvider>
+            <div className="container py-5">
+                <Header chapterId={params.chapterId} />
+                <Breadcrumbs links={[{ link: `/part/${chapter.part?.id}`, name: "§ " + chapter.part?.num + " " + chapter.part?.title }, { name: "§ " + chapter.num + " " + chapter.title }]} />
+                <div className="mt-5">
+                    <ChapterComponent chapter={chapter} />
+                </div>
+                <div className="mt-4">
+                    <ChapterContentComponent content={chapter.text} />
+                </div>
+                <Footer />
             </div>
-            <div className="mt-4">
-                <ChapterContentComponent content={chapter.text} />
-            </div>
-            <Footer />
-        </div>
+        </ConfirmServiceProvider>
     );
 };
 

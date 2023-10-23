@@ -14,8 +14,8 @@ const Breadcrumbs = ({ links }) => {
                                 Оглавление
                             </Link>
                         </li>
-                        {links.map((link) => (
-                            <li className="breadcrumb-item">
+                        {links.map((link, index) => (
+                            <li className="breadcrumb-item" key={index}>
                                 <Link className="text-decoration-none text-body" to={link.link}>
                                     {link.name}
                                 </Link>

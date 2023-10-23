@@ -14,7 +14,7 @@ const ThemeSwitcher = () => {
                     setNowTheme("light");
                 }}
             >
-                <i className="fa-light fa-sun fa-fw me-2"></i>
+                <i className="fa-light fa-sun fa-fw"></i>
             </button>
         );
     };
@@ -28,7 +28,7 @@ const ThemeSwitcher = () => {
                     setNowTheme("dark");
                 }}
             >
-                <i className="fa-light fa-moon fa-fw me-2"></i> 
+                <i className="fa-light fa-moon fa-fw"></i> 
             </button>
         );
     };

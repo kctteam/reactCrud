@@ -25,8 +25,8 @@ const Main = () => {
             <Breadcrumbs />
             <div className="row justify-content-end mt-5">
                 <div className="col-6 text-end lead fst-italic">
-                    <blockquote>Все написанное здесь наработано опытом команды... Отступление карается болячками ан@льными для отступника и всей команды...</blockquote>
-                    <figcaption className="blockquote-footer">От авторов</figcaption>
+                    <blockquote>Все написанное здесь наработано опытом команды... Отступление карается болячками ан@льными для отступника и команды оной...</blockquote>
+                    <figcaption className="blockquote-footer mt-2">От авторов</figcaption>
                 </div>
             </div>
             <div className="row">

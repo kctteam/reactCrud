@@ -5,7 +5,8 @@ export async function getChapter(id) {
     const path = "/chapter/" + id;
     return apiClient.get(path, {
         params: {
-            expand: "part,text"
+            expand: "part,text",
+            sort: "num"
         },
         headers: {
             "Content-Type": "application/json",
@@ -16,4 +17,14 @@ export async function getChapter(id) {
 export async function patchChapter(id, data) {
     const path = "/chapter/" + id;
     return apiClient.patch(path, data);
+}
+
+export async function postChapter(data) {
+    const path = "/chapter";
+    return apiClient.post(path, data);
+}
+
+export async function deleteChapterMethod(id) {
+    const path = "/chapter/" + id;
+    return apiClient.delete(path);
 }

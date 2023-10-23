@@ -13,7 +13,8 @@ import reportWebVitals from "./reportWebVitals";
 import Main from "./pages/main/Main";
 import Chapter from "./pages/chapter/Chapter";
 import Part from "./pages/part/Part";
-import Editor from "./pages/editor/Editor";
+import EditorPart from "./pages/editor/EditorPart";
+import EditorСhapter from "./pages/editor/EditorСhapter";
 
 setDefaultTheme(); //Определение темная или светлая тема
 
@@ -36,12 +37,17 @@ const router = createBrowserRouter([
     },
     {
         path: "/part/:partId/edit",
-        element: <Editor />,
+        element: <EditorPart />,
+        title: "Редактор",
+    },
+    {
+        path: "/chapter/:partId/create",
+        element: <EditorСhapter />,
         title: "Редактор",
     },
     {
         path: "/chapter/:chapterId/edit",
-        element: <Editor />,
+        element: <EditorСhapter />,
         title: "Редактор",
     },
 ]);

@@ -61,4 +61,6 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 // Utilities
 @import "bootstrap/scss/utilities/api";
 
+@import "loader"
+
 
