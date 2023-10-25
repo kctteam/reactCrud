@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
 
 const Breadcrumbs = ({ links }) => {
-    if (!links || links.length == 0) {
-        return <></>;
-    }
     return (
-        <div className="row mt-3">
+        <div className="row">
             <div className="col-12">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">

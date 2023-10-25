@@ -1,28 +1,27 @@
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
-//import data from "../../data/testData.json";
-
 import Part from "../../components/content/PartComponent";
-import Breadcrumbs from "../../components/header/Breadcrumbs";
-
 import { getParts } from "../../utils/api/Part";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../../components/layout/MainLayout";
 
 const Main = () => {
+    const { breadcrumbs, current_item } = useContext(Context);
+
     const [parts, setParts] = useState([]);
 
     useEffect(() => {
-        getParts().then((res) => {
-            setParts(res.data);
-        }).catch((e) => {
-            console.log(e);
-        })
+        getParts()
+            .then((res) => {
+                setParts(res.data);
+                breadcrumbs.setLinks([]);
+                current_item.setItem({type: "Main", data: {}});
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     }, []);
 
     return (
-        <div className="container py-5">
-            <Header />
-            <Breadcrumbs />
+        <>
             <div className="row justify-content-end mt-5">
                 <div className="col-6 text-end lead fst-italic">
                     <blockquote>Все написанное здесь наработано опытом команды... Отступление карается болячками ан@льными для отступника и команды оной...</blockquote>
@@ -36,8 +35,7 @@ const Main = () => {
                     </div>
                 ))}
             </div>
-            <Footer />
-        </div>
+        </>
     );
 };
 

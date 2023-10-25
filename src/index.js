@@ -4,7 +4,7 @@ import "bootstrap/js/index.esm";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, BrowserRouter, Routes, Route } from "react-router-dom";
 import { setDefaultTheme } from "./utils/ThemeSwitcher";
 
 import Error from "./pages/Error";
@@ -16,9 +16,11 @@ import Part from "./pages/part/Part";
 import EditorPart from "./pages/editor/EditorPart";
 import EditorСhapter from "./pages/editor/EditorСhapter";
 
+import MainLayout from "./components/layout/MainLayout";
+
 setDefaultTheme(); //Определение темная или светлая тема
 
-const router = createBrowserRouter([
+const router = [
     {
         path: "/",
         element: <Main />,
@@ -50,12 +52,20 @@ const router = createBrowserRouter([
         element: <EditorСhapter />,
         title: "Редактор",
     },
-]);
+];
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <BrowserRouter>
+            <MainLayout>
+                <Routes>
+                    {router.map((route) => (
+                        <Route key={route.key} path={route.path} element={route.element} />
+                    ))}
+                </Routes>
+            </MainLayout>
+        </BrowserRouter>
     </React.StrictMode>
 );
 
