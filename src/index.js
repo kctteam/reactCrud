@@ -4,7 +4,7 @@ import "bootstrap/js/index.esm";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider, BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { setDefaultTheme } from "./utils/ThemeSwitcher";
 
 import Error from "./pages/Error";
@@ -61,7 +61,7 @@ root.render(
             <MainLayout>
                 <Routes>
                     {router.map((route) => (
-                        <Route key={route.key} path={route.path} element={route.element} />
+                        <Route key={route.path} path={route.path} element={route.element} />
                     ))}
                 </Routes>
             </MainLayout>

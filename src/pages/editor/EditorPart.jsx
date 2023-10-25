@@ -84,7 +84,7 @@ const EditorPart = () => {
                 </div>
             </div>
             <div className="col-12 mt-4">
-                <button className="btn btn-primary" onClick={save}>
+                <button className="btn btn-lg btn-link text-body text-decoration-none px-0 mx-0" onClick={save}>
                     {params.partId !== "null" ? "Сохранить" : "Создать"}
                 </button>
             </div>

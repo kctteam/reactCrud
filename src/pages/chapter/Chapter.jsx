@@ -1,16 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-
 import { getChapter } from "../../utils/api/Chapter";
-
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
-import Breadcrumbs from "../../components/header/Breadcrumbs";
 import ChapterComponent from "../../components/content/ChapterComponent";
 import ChapterContentComponent from "../../components/content/ChapterContentComponent";
-
-import { ConfirmServiceProvider } from "./../../components/content/ConfirmServiceBS";
-
 import { Context } from "../../components/layout/MainLayout";
 
 const Chapter = () => {

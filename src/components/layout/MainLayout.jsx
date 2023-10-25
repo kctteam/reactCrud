@@ -2,11 +2,8 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Breadcrumbs from "../../components/header/Breadcrumbs";
 
-import { Routes, Route } from "react-router-dom";
 import { ConfirmServiceProvider } from "./../../components/content/ConfirmServiceBS";
 import { createContext, useState } from "react";
-
-const HeaderContext = createContext({ breadcrunbs: { links: [] } });
 
 export const Context = createContext({});
 

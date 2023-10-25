@@ -1,21 +1,16 @@
 import ThemeSwitcher from "./ThemeSwitcher";
-import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { deletePartMethod } from "../../utils/api/Part";
 import { deleteChapterMethod } from "../../utils/api/Chapter";
 import { useConfirm } from "./../content/ConfirmServiceBS";
 
 import { Context } from "../../components/layout/MainLayout";
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 
-const Header = ({ chapterId, partId }) => {
+const Header = () => {
     const navigate = useNavigate();
     const { current_item } = useContext(Context);
     const confirm = useConfirm();
-    const location = useLocation();
-
-    useEffect(() => {
-        console.log(current_item.item);
-    }, [current_item.item])
 
     return (
         <div className="row">
@@ -27,14 +22,14 @@ const Header = ({ chapterId, partId }) => {
                 </h1>
             </div>
             <div className="col text-end">
-                {current_item.item.type == "Main" ? (
+                {current_item.item.type === "Main" ? (
                     <div className="d-inline-flex border-end pe-2 me-2">
                         <Link to={"/part/" + null + "/edit"} className="btn btn-link text-body" title="Создать раздел">
                             <i className="fa-light fa-circle-plus fa-fw"></i>
                         </Link>
                     </div>
                 ) : null}
-                {current_item.item.type == "Part" ? (
+                {current_item.item.type === "Part" ? (
                     <div className="d-inline-flex border-end pe-2 me-2">
                         <Link to={"/chapter/" + current_item.item.data.id + "/create/"} className="btn btn-link text-body" title="Создать главу">
                             <i className="fa-light fa-circle-plus fa-fw"></i>
@@ -53,7 +48,6 @@ const Header = ({ chapterId, partId }) => {
                                     .then(() => {
                                         deletePartMethod(current_item.item.data.id);
                                         return navigate("/");
-                                        console.log("confirmed");
                                     })
                                     .catch(() => {
                                         console.log("cancel");
@@ -64,7 +58,7 @@ const Header = ({ chapterId, partId }) => {
                         </button>
                     </div>
                 ) : null}
-                {current_item.item.type == "Chapter" ? (
+                {current_item.item.type === "Chapter" ? (
                     <div className="d-inline-flex border-end pe-2 me-2" title="Редактировать главу">
                         <Link to={"/chapter/" + current_item.item.data.id + "/edit"} className="btn btn-link text-body">
                             <i className="fa-light fa-pen-circle"></i>
@@ -80,7 +74,6 @@ const Header = ({ chapterId, partId }) => {
                                     .then(() => {
                                         deleteChapterMethod(current_item.item.data.id);
                                         return navigate("/");
-                                        console.log("confirmed");
                                     })
                                     .catch(() => {
                                         console.log("cancel");
