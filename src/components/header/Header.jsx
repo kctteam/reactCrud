@@ -12,6 +12,8 @@ const Header = () => {
     const { current_item } = useContext(Context);
     const confirm = useConfirm();
 
+    const editable = false;
+
     return (
         <div className="row">
             <div className="col">
@@ -22,14 +24,14 @@ const Header = () => {
                 </h1>
             </div>
             <div className="col text-end">
-                {current_item.item.type === "Main" ? (
+                {editable && current_item.item.type === "Main" ? (
                     <div className="d-inline-flex border-end pe-2 me-2">
                         <Link to={"/part/" + null + "/edit"} className="btn btn-link text-body" title="Создать раздел">
                             <i className="fa-light fa-circle-plus fa-fw"></i>
                         </Link>
                     </div>
                 ) : null}
-                {current_item.item.type === "Part" ? (
+                {editable && current_item.item.type === "Part" ? (
                     <div className="d-inline-flex border-end pe-2 me-2">
                         <Link to={"/chapter/" + current_item.item.data.id + "/create/"} className="btn btn-link text-body" title="Создать главу">
                             <i className="fa-light fa-circle-plus fa-fw"></i>
@@ -58,7 +60,7 @@ const Header = () => {
                         </button>
                     </div>
                 ) : null}
-                {current_item.item.type === "Chapter" ? (
+                {editable && current_item.item.type === "Chapter" ? (
                     <div className="d-inline-flex border-end pe-2 me-2" title="Редактировать главу">
                         <Link to={"/chapter/" + current_item.item.data.id + "/edit"} className="btn btn-link text-body">
                             <i className="fa-light fa-pen-circle"></i>
